@@ -1,0 +1,12 @@
+---
+import { parts } from "../../content/book";
+---
+
+<ol class="foundation-map">
+  {parts.map((part) => (
+    <li class={`part-${part.color}`}>
+      <span>{String(part.number).padStart(2, "0")}</span>
+      <div><small>{part.foundation}</small><strong>{part.title}</strong><p>{part.subtitle}</p></div>
+    </li>
+  ))}
+</ol>

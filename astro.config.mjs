@@ -12,16 +12,16 @@ export default defineConfig({
   output: "static",
   integrations: [
     starlight({
-      title: "可执行的智慧",
+      title: "现代生活的算法基座",
       description: "从古代计算术到现代科学工程，一部可以亲手运行的算法文明史。",
       locales: {
         root: { label: "简体中文", lang: "zh-CN" },
       },
       social: [
-        { icon: "github", label: "GitHub", href: "https://github.com/Astronecsys/executable-wisdom" },
+        { icon: "github", label: "GitHub", href: "https://github.com/Astronecsys/algorithmic-foundations" },
       ],
       editLink: {
-        baseUrl: "https://github.com/Astronecsys/executable-wisdom/edit/main/src/content/docs/",
+        baseUrl: "https://github.com/Astronecsys/algorithmic-foundations/edit/main/src/content/docs/",
       },
       customCss: ["./src/styles/starlight.css"],
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
@@ -30,6 +30,7 @@ export default defineConfig({
           label: "开始阅读",
           items: [
             { label: "书籍首页", link: "/" },
+            { slug: "guide", label: "全书导言" },
             { slug: "contents", label: "全书目录" },
           ],
         },

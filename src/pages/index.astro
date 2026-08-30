@@ -3,27 +3,27 @@ import BookLayout from "../layouts/BookLayout.astro";
 import { chapterCount, parts } from "../content/book";
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
-const firstChapter = `${base}chapters/what-is-an-algorithm/`;
+const guideUrl = `${base}guide/`;
 ---
 
-<BookLayout title="可执行的智慧｜互动算法文明史" description="从古代计算术到现代科学工程，一部可以亲手运行的算法史。">
+<BookLayout title="现代生活的算法基座｜互动算法文明史" description="从古代计算术到现代科学工程，理解支撑现代生活的算法思想。">
   <main class="landing">
     <header class="landing-header">
-      <a class="landing-brand" href={base}><span>算</span><b>可执行的智慧</b><small>Executable Wisdom</small></a>
+      <a class="landing-brand" href={base}><span>算</span><b>现代生活的算法基座</b><small>Algorithmic Foundations</small></a>
       <nav aria-label="主导航">
         <a href={`${base}contents/`}>全书目录</a>
-        <a href={firstChapter}>开始阅读</a>
-        <a href="https://github.com/Astronecsys/executable-wisdom">GitHub ↗</a>
+        <a href={guideUrl}>开始阅读</a>
+        <a href="https://github.com/Astronecsys/algorithmic-foundations">GitHub ↗</a>
       </nav>
     </header>
 
     <section class="cover">
       <div class="cover-copy">
         <p class="overline">一部可以亲手运行的算法文明史</p>
-        <h1>可执行的<br /><em>智慧</em></h1>
-        <p class="cover-deck">算法不始于计算机。它始于人类反复追问：一个困难，能否被写成明确、可靠、可以检验的步骤？</p>
+        <h1>现代生活的<br /><em>算法基座</em></h1>
+        <p class="cover-deck">从搜索路线、医学成像到网络通信，现代生活建立在一层层算法思想之上。它们并不始于计算机，而始于人类把困难变成明确、可靠、可以检验的步骤。</p>
         <div class="cover-actions">
-          <a class="button-primary" href={firstChapter}>从第一章开始 <span>→</span></a>
+          <a class="button-primary" href={guideUrl}>先读全书导言 <span>→</span></a>
           <a class="button-secondary" href={`${base}contents/`}>浏览 {chapterCount} 章目录</a>
         </div>
       </div>
@@ -51,7 +51,7 @@ const firstChapter = `${base}chapters/what-is-an-algorithm/`;
             <a href={`${base}contents/#${part.slug}`}>
               <span>{String(part.number).padStart(2, "0")}</span>
               <div><h3>{part.title}</h3><p>{part.subtitle}</p></div>
-              <small>{part.span}</small>
+              <small>{part.foundation}<br />{part.span}</small>
               <b>{part.chapters.length} 章</b>
               <em>↗</em>
             </a>
@@ -65,6 +65,6 @@ const firstChapter = `${base}chapters/what-is-an-algorithm/`;
       <div><p>改变两个整数，预测余数，逐步运行欧几里得算法，并在过程中发现它保存答案的不变量。</p><a class="button-light" href={`${base}chapters/euclid/`}>进入互动样板章 <span>→</span></a></div>
     </section>
 
-    <footer class="landing-footer"><b>可执行的智慧</b><span>开源、免费、持续写作</span><a href="https://github.com/Astronecsys/executable-wisdom">查看源代码 ↗</a></footer>
+    <footer class="landing-footer"><b>现代生活的算法基座</b><span>开源、免费、持续写作</span><a href="https://github.com/Astronecsys/algorithmic-foundations">查看源代码 ↗</a></footer>
   </main>
 </BookLayout>

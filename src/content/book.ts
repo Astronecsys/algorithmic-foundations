@@ -15,6 +15,7 @@ export interface Part {
   number: number;
   slug: string;
   title: string;
+  foundation: string;
   subtitle: string;
   span: string;
   color: string;
@@ -25,8 +26,9 @@ export const parts: Part[] = [
   {
     number: 1,
     slug: "origins",
-    title: "把推理变成步骤",
-    subtitle: "算法早于机器，也早于现代数学符号。",
+    title: "计算成为步骤",
+    foundation: "计算语言",
+    subtitle: "从记数、乘法、开方到代数，建立可重复计算的基本语言。",
     span: "约前 1800—公元 1200",
     color: "clay",
     chapters: [
@@ -44,8 +46,9 @@ export const parts: Part[] = [
   {
     number: 2,
     slug: "measurement",
-    title: "测量一个不精确的世界",
-    subtitle: "答案不再总是整数；误差本身也必须被计算。",
+    title: "测量不确定的世界",
+    foundation: "科学测量",
+    subtitle: "现实很少给出整洁答案，误差本身也必须被计算。",
     span: "1600—1950",
     color: "gold",
     chapters: [
@@ -62,8 +65,9 @@ export const parts: Part[] = [
   {
     number: 3,
     slug: "search-and-optimization",
-    title: "在可能性中寻找道路",
-    subtitle: "好算法的力量，常常来自拒绝逐一尝试。",
+    title: "搜索与优化",
+    foundation: "决策机制",
+    subtitle: "排序、路径与资源配置，让系统不必逐一尝试所有可能。",
     span: "1940—至今",
     color: "forest",
     chapters: [
@@ -80,8 +84,9 @@ export const parts: Part[] = [
   {
     number: 4,
     slug: "simulation-control-space",
-    title: "模拟、设计与控制",
-    subtitle: "让计算进入桥梁、航天器、地图与人体内部。",
+    title: "模拟与控制",
+    foundation: "工程系统",
+    subtitle: "把连续世界放进网格、状态与反馈回路。",
     span: "1900—至今",
     color: "blue",
     chapters: [
@@ -97,8 +102,9 @@ export const parts: Part[] = [
   {
     number: 5,
     slug: "information",
-    title: "压缩、传输与保护信息",
-    subtitle: "信息可以更短、更可靠，也可以只让正确的人读懂。",
+    title: "信息的压缩、传输与保护",
+    foundation: "信息系统",
+    subtitle: "编码决定消息怎样存储、传输、恢复与保密。",
     span: "1940—至今",
     color: "violet",
     chapters: [
@@ -113,8 +119,9 @@ export const parts: Part[] = [
   {
     number: 6,
     slug: "life-and-society",
-    title: "解读生命与协调社会",
-    subtitle: "算法既比较DNA，也安排人与机会之间的关系。",
+    title: "生命与社会",
+    foundation: "生命与制度",
+    subtitle: "算法比较DNA，也安排人与机会之间的关系。",
     span: "1960—至今",
     color: "rose",
     chapters: [
@@ -128,8 +135,9 @@ export const parts: Part[] = [
   {
     number: 7,
     slug: "infrastructure",
-    title: "现代世界的隐形基础设施",
-    subtitle: "只选那些为现实系统带来全新思想的算法。",
+    title: "数字世界的基础设施",
+    foundation: "数字基础设施",
+    subtitle: "存储、排名、拥塞与共识，构成看不见的公共底座。",
     span: "1970—至今",
     color: "slate",
     chapters: [

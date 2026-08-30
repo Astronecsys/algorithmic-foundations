@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { title, description, frontmatter } = Astro.props;
-const pageTitle = frontmatter?.title ?? title ?? "可执行的智慧";
+const pageTitle = frontmatter?.title ?? title ?? "现代生活的算法基座";
 const pageDescription = frontmatter?.description ?? description ?? "一部可以亲手运行的算法文明史";
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---

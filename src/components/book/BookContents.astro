@@ -14,7 +14,7 @@ const chapterUrl = (slug: string) => `${base}chapters/${slug}/`;
   {parts.map((part) => (
     <section class={`contents-part part-${part.color}`} id={part.slug}>
       <header>
-        <div><span>卷 {String(part.number).padStart(2, "0")}</span><small>{part.span}</small></div>
+        <div><span>卷 {String(part.number).padStart(2, "0")}</span><small>{part.foundation}<br />{part.span}</small></div>
         <h2>{part.title}</h2>
         <p>{part.subtitle}</p>
       </header>

@@ -1,4 +1,4 @@
-# 可执行的智慧 · Executable Wisdom
+# 现代生活的算法基座 · Algorithmic Foundations of Modern Life
 
 > 一部从古代计算术到现代科学工程、可以亲手运行的算法文明史。
 
@@ -6,8 +6,8 @@
 
 ## 直接阅读
 
-- [打开《可执行的智慧》](https://astronecsys.github.io/executable-wisdom/)
-- [试读：欧几里得算法](https://astronecsys.github.io/executable-wisdom/chapters/euclid/)
+- [打开《现代生活的算法基座》](https://astronecsys.github.io/algorithmic-foundations/)
+- [试读：欧几里得算法](https://astronecsys.github.io/algorithmic-foundations/chapters/euclid/)
 
 网页无需安装、注册或大型计算资源。实验在浏览器中运行，可以修改输入、逐步执行、回退并观察算法保持了什么。
 
@@ -53,7 +53,7 @@
 
 下一步是把欧几里得算法补成第一篇完整章节，再以Runge–Kutta数值模拟和CT图像重建验证不同类型的互动学习。
 
-欢迎通过 [Issues](https://github.com/Astronecsys/executable-wisdom/issues) 指出史实、数学、文字和交互问题。
+欢迎通过 [Issues](https://github.com/Astronecsys/algorithmic-foundations/issues) 指出史实、数学、文字和交互问题。
 
 ---
 
