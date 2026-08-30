@@ -48,10 +48,11 @@
 - 每章独立页面、前后章导航与移动端阅读界面
 - 现实任务、模型卡、计算问题、互动实验、双重验证和史料槽位
 - 可复用的互动实验界面
-- 欧几里得算法样板实验
+- “什么才算算法”、古埃及乘法与欧几里得算法三篇完整样板章
+- 含糊指令诊所、加倍选行乘法与欧几里得算法三个互动实验
 - GitHub Pages自动发布
 
-下一步是把欧几里得算法补成第一篇完整章节，再以Runge–Kutta数值模拟和CT图像重建验证不同类型的互动学习。
+下一步将沿第一卷继续完成巴比伦开方与《九章算术》消元，并以Runge–Kutta数值模拟和CT图像重建验证连续模拟与重建型实验。
 
 欢迎通过 [Issues](https://github.com/Astronecsys/algorithmic-foundations/issues) 指出史实、数学、文字和交互问题。
 
@@ -61,7 +62,7 @@
 
 项目采用 Astro + Starlight + MDX + React：Starlight 提供成熟的 Web Book 阅读框架，Astro 将正文预先生成成静态网页，MDX 用于章节写作，React 只负责需要互动的实验组件。
 
-章节位于 `src/content/docs/chapters/`。如果在 `src/content/book.ts` 中加入新章节，可以执行 `npm run generate:chapters` 为缺少正文文件的章节生成内容骨架；已有书稿和单独维护的欧几里得样板章不会被覆盖。
+章节位于 `src/content/docs/chapters/`。如果在 `src/content/book.ts` 中加入新章节，可以执行 `npm run generate:chapters` 为缺少正文文件的章节生成内容骨架；标记为 `sample` 的完整书稿不会被批量生成器覆盖。
 
 ### 本地运行
 

@@ -32,8 +32,8 @@ export const parts: Part[] = [
     span: "约前 1800—公元 1200",
     color: "clay",
     chapters: [
-      { number: 1, slug: "what-is-an-algorithm", title: "什么才算算法", period: "序章", question: "一个方法怎样才算明确、可重复、会停止？", idea: "输入、步骤、状态、输出与终止", lab: "给一组含糊指令补足缺失条件" },
-      { number: 2, slug: "egyptian-multiplication", title: "古埃及乘法", period: "约前 1650", question: "只会加倍和相加，怎样完成任意乘法？", idea: "分解、加倍与二进制表示的前影", lab: "选择加倍行，拼出目标乘积" },
+      { number: 1, slug: "what-is-an-algorithm", title: "什么才算算法", period: "序章", question: "一个方法怎样才算明确、可重复、会停止？", idea: "输入、步骤、状态、输出与终止", lab: "修补含糊指令，使它可以机械执行", status: "sample" },
+      { number: 2, slug: "egyptian-multiplication", title: "古埃及乘法", period: "约前 1650—1550", question: "只用加倍和相加，怎样完成任意正整数乘法？", idea: "分解、加倍与二进制表示的前影", lab: "选择加倍行，亲手拼出目标乘积", status: "sample" },
       { number: 3, slug: "babylonian-square-root", title: "巴比伦开方", period: "约前 1800", question: "不知道平方根时，怎样不断逼近它？", idea: "迭代、误差与收敛", lab: "改变初始猜测，观察误差缩小" },
       { number: 4, slug: "euclid", title: "不断缩小问题", period: "约前 300", question: "怎样不用枚举全部因数求最大公约数？", idea: "递减、余数与不变量", lab: "在长度条和除法记录之间单步切换", status: "sample" },
       { number: 5, slug: "sieve-of-eratosthenes", title: "筛去合数", period: "约前 240", question: "怎样一次找出范围内的所有素数？", idea: "批量排除与计算上界", lab: "在数字网格上选择筛选顺序" },

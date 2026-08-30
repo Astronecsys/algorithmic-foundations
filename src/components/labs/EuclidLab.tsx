@@ -1,14 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-type Step = { a: number; b: number; q: number; r: number };
-
-function buildSteps(first: number, second: number): Step[] {
-  const result: Step[] = [];
-  let a = Math.max(first, second), b = Math.min(first, second);
-  while (b !== 0) { const q = Math.floor(a / b), r = a % b; result.push({ a, b, q, r }); a = b; b = r; }
-  return result;
-}
+import { euclidSteps, greatestCommonDivisor } from "../../lib/algorithms/euclid";
 
 function safeNumber(value: string, fallback: number) {
   const parsed = Number.parseInt(value, 10);
@@ -17,9 +10,9 @@ function safeNumber(value: string, fallback: number) {
 
 export function EuclidLab() {
   const [first, setFirst] = useState(252), [second, setSecond] = useState(105), [cursor, setCursor] = useState(0);
-  const steps = useMemo(() => buildSteps(first, second), [first, second]);
+  const steps = useMemo(() => euclidSteps(first, second), [first, second]);
   const step = steps[Math.min(cursor, steps.length - 1)], completed = cursor >= steps.length;
-  const gcd = steps.length ? steps[steps.length - 1].b : first, scale = Math.max(first, second);
+  const gcd = greatestCommonDivisor(first, second), scale = Math.max(first, second);
   const update = (which: "first" | "second", value: string) => {
     const next = safeNumber(value, which === "first" ? first : second);
     which === "first" ? setFirst(next) : setSecond(next); setCursor(0);

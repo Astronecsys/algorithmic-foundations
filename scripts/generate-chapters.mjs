@@ -8,7 +8,7 @@ const force = process.argv.includes("--force");
 let generated = 0;
 
 for (const chapter of chapters) {
-  if (chapter.slug === "euclid") continue;
+  if (chapter.status === "sample") continue;
   const frame = modelingFrames[chapter.slug];
   if (!frame) throw new Error(`Missing modeling frame for ${chapter.slug}`);
   const target = new URL(`${chapter.slug}.mdx`, outputDirectory);
