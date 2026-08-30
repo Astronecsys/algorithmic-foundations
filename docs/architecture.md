@@ -6,11 +6,11 @@
 
 ## 总体选择
 
-- **应用外壳：** vinext + React + TypeScript。保留服务端渲染和按章节路由，首次打开即可阅读，互动部分再在浏览器中接管。
+- **出版外壳：** Astro + TypeScript。每章在构建时生成完整HTML，首次打开即可阅读，互动部分再在浏览器中按需接管。
 - **内容层：** MDX。普通叙事保持接近 Markdown，实验、时间线、史料卡和练习作为组件嵌入正文。
 - **算法内核：** 无界面的纯 TypeScript 函数。算法不直接操作图形，而是输出标准化的步骤事件。
 - **表现层：** React 消费步骤事件；离散结构优先使用 SVG，密集粒子和连续模拟使用 Canvas，只有确有必要时才使用 WebGL。
-- **发布：** 每章独立路由，部署到边缘网络；默认不需要数据库或登录。
+- **发布：** 每章独立路由，通过GitHub Actions自动发布到GitHub Pages；默认不需要数据库或登录。
 
 ## 最关键的架构约束：算法与动画分离
 
@@ -31,18 +31,17 @@
 ## 建议目录
 
 ```text
-app/
-  chapters/[slug]/       章节路由与分享元数据
-components/
-  book/                  脚注、史料卡、公式、时间线
-  labs/                  播放器和领域视图
-content/
-  chapters/              MDX 正文
-  sources/               书目与史料元数据
-lib/
-  algorithms/            纯算法及步骤协议
-  exercises/             判题器与提示策略
-  sharing/               URL 状态的编码与恢复
+src/
+  pages/                 首页与MDX章节路由
+  layouts/               书籍页面骨架和分享元数据
+  components/
+    book/                脚注、史料卡、公式、时间线
+    labs/                播放器和领域视图
+  content/               章节数据与结构化书目
+  lib/
+    algorithms/          纯算法及步骤协议
+    exercises/           判题器与提示策略
+    sharing/             URL状态的编码与恢复
 public/
   figures/               有授权记录的静态资料
 tests/
@@ -70,7 +69,8 @@ tests/
 ## 分享与发布
 
 - 每章具备独立标题、简介和社交分享卡片。
-- 默认页面服务端渲染，搜索引擎和关闭 JavaScript 的读者仍可看到正文。
+- 默认页面预先生成，搜索引擎和关闭JavaScript的读者仍可看到正文。
+- 推送到 `main` 后由GitHub Actions构建和发布，仓库与阅读网站保持同步。
 - 初期保持无后端、可缓存、可离线化，降低维护成本。
 - 正文和互动组件共用版本控制；每次发布都能对应到确定的史料和算法实现版本。
 

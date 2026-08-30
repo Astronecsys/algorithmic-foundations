@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  frontmatter?: { title?: string; description?: string };
+}
+
+const { title, description, frontmatter } = Astro.props;
+const pageTitle = frontmatter?.title ?? title ?? "可执行的智慧";
+const pageDescription = frontmatter?.description ?? description ?? "一部可以亲手运行的算法文明史";
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonical} />
+    <title>{pageTitle}</title>
+  </head>
+  <body><slot /></body>
+</html>
