@@ -1,0 +1,36 @@
+---
+import { chapterCount, parts } from "../../content/book";
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+const chapterUrl = (slug: string) => `${base}chapters/${slug}/`;
+---
+
+<div class="book-contents">
+  <div class="contents-summary">
+    <p>一部横跨约四千年的算法文明史</p>
+    <div><strong>7</strong><span>卷</span><strong>{chapterCount}</strong><span>章</span><strong>1</strong><span>个可运行样板</span></div>
+  </div>
+
+  {parts.map((part) => (
+    <section class={`contents-part part-${part.color}`} id={part.slug}>
+      <header>
+        <div><span>卷 {String(part.number).padStart(2, "0")}</span><small>{part.span}</small></div>
+        <h2>{part.title}</h2>
+        <p>{part.subtitle}</p>
+      </header>
+      <ol>
+        {part.chapters.map((chapter) => (
+          <li>
+            <a href={chapterUrl(chapter.slug)}>
+              <span>{String(chapter.number).padStart(2, "0")}</span>
+              <div><b>{chapter.title}</b><small>{chapter.question}</small></div>
+              {chapter.status === "sample" && <i>样板</i>}
+              {chapter.status === "outlined" && <i class="outlined">重点</i>}
+              <em>→</em>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</div>

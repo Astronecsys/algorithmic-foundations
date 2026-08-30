@@ -1,0 +1,26 @@
+---
+interface Props {
+  number: number;
+  part: string;
+  period: string;
+  idea: string;
+  lab: string;
+  status?: "sample" | "outlined" | "planned";
+}
+
+const { number, part, period, idea, lab, status = "planned" } = Astro.props;
+const statusLabel = status === "sample" ? "完整样板" : status === "outlined" ? "重点骨架" : "内容骨架";
+---
+
+<div class="chapter-lead">
+  <div class="chapter-facts">
+    <span>第 {String(number).padStart(2, "0")} 章</span>
+    <span>{period}</span>
+    <span>{part}</span>
+    <b class={`chapter-status status-${status}`}>{statusLabel}</b>
+  </div>
+  <div class="chapter-focus">
+    <div><small>核心思想</small><strong>{idea}</strong></div>
+    <div><small>互动实验</small><strong>{lab}</strong></div>
+  </div>
+</div>

@@ -1,57 +1,70 @@
 ---
 import BookLayout from "../layouts/BookLayout.astro";
-import { EuclidLab } from "../components/labs/EuclidLab";
 import { chapterCount, parts } from "../content/book";
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
-const eras = [
-  { year: "约前 1800", title: "计算成为方法", body: "从巴比伦开方到古埃及乘法，人们开始把经验写成可重复的步骤。" },
-  { year: "约前 300", title: "推理成为程序", body: "欧几里得算法展示了：不断缩小问题，也能抵达确定答案。" },
-  { year: "17—19 世纪", title: "近似成为科学", body: "插值、微分方程与最小二乘，让不可直接求解的问题变得可计算。" },
-  { year: "20 世纪至今", title: "算法进入现实", body: "优化、控制、成像、纠错与生物信息学重塑科学和社会。" },
-];
+const firstChapter = `${base}chapters/what-is-an-algorithm/`;
 ---
 
 <BookLayout title="可执行的智慧｜互动算法文明史" description="从古代计算术到现代科学工程，一部可以亲手运行的算法史。">
-  <main>
-    <header class="topbar">
-      <a class="brand" href="#top"><span class="brand-mark">算</span><span>可执行的智慧</span></a>
-      <nav aria-label="主导航"><a href={`${base}contents/`}>全书目录</a><a href="#journey">时间线</a><a href="#lab">实验</a><a href="#method">学习方法</a></nav>
+  <main class="landing">
+    <header class="landing-header">
+      <a class="landing-brand" href={base}><span>算</span><b>可执行的智慧</b><small>Executable Wisdom</small></a>
+      <nav aria-label="主导航">
+        <a href={`${base}contents/`}>全书目录</a>
+        <a href={firstChapter}>开始阅读</a>
+        <a href="https://github.com/Astronecsys/executable-wisdom">GitHub ↗</a>
+      </nav>
     </header>
-    <section class="hero" id="top">
-      <div class="eyebrow"><span></span> 一本可以亲手运行的算法文明史</div>
-      <h1>人类如何把问题<br />变成<span>可执行的步骤</span></h1>
-      <p class="hero-copy">从泥板上的开方，到医学成像、航天控制与基因组装。不把计算机当作故事的主角，而是追随一种跨越文明的思想：如何可靠地解决问题。</p>
-      <div class="hero-actions"><a class="primary" href={`${base}contents/`}>浏览全书目录 <b>→</b></a><a class="text-action" href="#lab">先做一次实验 ↓</a></div>
-      <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div><span class="orbit-label label-a">测量</span><span class="orbit-label label-b">搜索</span><span class="orbit-label label-c">控制</span><span class="orbit-label label-d">证明</span><div class="orbit-center">问题<br /><b>→</b><br />方法</div></div>
-    </section>
-    <section class="journey" id="journey">
-      <div class="section-heading"><p>跨越四千年的主线</p><h2>算法不始于计算机</h2></div>
-      <div class="timeline">{eras.map((era, index) => <article><div class="timeline-index">0{index + 1}</div><time>{era.year}</time><h3>{era.title}</h3><p>{era.body}</p></article>)}</div>
-    </section>
-    <section class="book-map" id="book-map">
-      <div class="section-heading"><p>七卷 · {chapterCount}章</p><h2>从古代计算到现代世界</h2></div>
-      <div class="book-map-grid">
-        {parts.map((part) => (
-          <a class={`book-part-card part-${part.color}`} href={`${base}contents/#${part.slug}`}>
-            <span>卷 {String(part.number).padStart(2, "0")}</span>
-            <small>{part.span}</small>
-            <h3>{part.title}</h3>
-            <p>{part.subtitle}</p>
-            <b>{part.chapters.length} 章 ↗</b>
-          </a>
-        ))}
+
+    <section class="cover">
+      <div class="cover-copy">
+        <p class="overline">一部可以亲手运行的算法文明史</p>
+        <h1>可执行的<br /><em>智慧</em></h1>
+        <p class="cover-deck">算法不始于计算机。它始于人类反复追问：一个困难，能否被写成明确、可靠、可以检验的步骤？</p>
+        <div class="cover-actions">
+          <a class="button-primary" href={firstChapter}>从第一章开始 <span>→</span></a>
+          <a class="button-secondary" href={`${base}contents/`}>浏览 {chapterCount} 章目录</a>
+        </div>
       </div>
-      <a class="contents-cta" href={`${base}contents/`}>查看完整内容骨架 <span>→</span></a>
+      <aside class="cover-object" aria-label="本书跨度">
+        <div class="object-head"><span>BOOK 01</span><span>持续写作中</span></div>
+        <div class="object-center"><small>从</small><strong>约前<br />1800</strong><i></i><small>到</small><strong>今天</strong></div>
+        <div class="object-foot"><span>7 卷</span><span>{chapterCount} 章</span><span>互动实验</span></div>
+      </aside>
     </section>
-    <section class="lab-section" id="lab">
-      <div class="section-heading lab-heading"><p>样板实验 · 欧几里得算法</p><h2>不要只看懂，亲手让它发生</h2></div>
-      <EuclidLab client:visible />
+
+    <section class="book-promise">
+      <div class="promise-title"><span>为什么写这本书</span><h2>计算机只是其中一章，<br />解决问题才是主线。</h2></div>
+      <div class="promise-grid">
+        <article><span>01</span><h3>从问题出发</h3><p>先回到算法诞生时的困境，再引入现代符号和定义。</p></article>
+        <article><span>02</span><h3>让思想可操纵</h3><p>通过预测、单步执行和极端输入，暴露方法真正依赖的结构。</p></article>
+        <article><span>03</span><h3>追踪现实回声</h3><p>把数论、测量、控制、成像、生命和社会放回同一条历史长河。</p></article>
+      </div>
     </section>
-    <section class="method" id="method">
-      <div class="section-heading"><p>每一章的学习闭环</p><h2>从困惑走向解释</h2></div>
-      <div class="method-grid">{[["01","遇见问题","先进入算法诞生时的真实困境，而不是先背定义。"],["02","大胆预测","在运行前判断下一步，让直觉暴露出来。"],["03","操纵实验","改变输入、制造极端情况，观察方法何时有效。"],["04","形成解释","最后才连接伪代码、复杂度、不变量与证明。"]].map(([n,title,body]) => <article><span>{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
+
+    <section class="volume-index">
+      <header><p class="overline">全书结构</p><h2>七条解决问题的主线</h2><a href={`${base}contents/`}>打开完整目录 →</a></header>
+      <ol>
+        {parts.map((part) => (
+          <li class={`part-${part.color}`}>
+            <a href={`${base}contents/#${part.slug}`}>
+              <span>{String(part.number).padStart(2, "0")}</span>
+              <div><h3>{part.title}</h3><p>{part.subtitle}</p></div>
+              <small>{part.span}</small>
+              <b>{part.chapters.length} 章</b>
+              <em>↗</em>
+            </a>
+          </li>
+        ))}
+      </ol>
     </section>
-    <footer><p>可执行的智慧 <span>·</span> Executable Wisdom</p><p>算法作为人类解决问题的方法</p></footer>
+
+    <section class="sample-invitation">
+      <div><p class="overline">样板章 · 第 04 章</p><h2>不要只看懂，<br />亲手让它发生。</h2></div>
+      <div><p>改变两个整数，预测余数，逐步运行欧几里得算法，并在过程中发现它保存答案的不变量。</p><a class="button-light" href={`${base}chapters/euclid/`}>进入互动样板章 <span>→</span></a></div>
+    </section>
+
+    <footer class="landing-footer"><b>可执行的智慧</b><span>开源、免费、持续写作</span><a href="https://github.com/Astronecsys/executable-wisdom">查看源代码 ↗</a></footer>
   </main>
 </BookLayout>

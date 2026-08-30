@@ -6,11 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "generate:chapters": "node scripts/generate-chapters.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "latest",
     "@astrojs/react": "latest",
+    "@astrojs/starlight": "^0.41.10",
     "astro": "latest",
     "react": "latest",
     "react-dom": "latest"

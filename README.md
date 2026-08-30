@@ -44,7 +44,8 @@
 
 - 全书首页和历史主线
 - 7卷47章的全书内容骨架
-- 每章独立页面及前后章导航
+- 基于 Starlight 的全书导航、页内目录、全文搜索和深色模式
+- 每章独立页面、前后章导航与移动端阅读界面
 - 历史现场、核心思想、互动实验、证明和史料槽位
 - 可复用的互动实验界面
 - 欧几里得算法样板实验
@@ -58,7 +59,9 @@
 
 ## 开发者说明
 
-项目采用 Astro + MDX + React：Astro将正文预先生成成静态网页，MDX用于章节写作，React只负责需要互动的实验组件。
+项目采用 Astro + Starlight + MDX + React：Starlight 提供成熟的 Web Book 阅读框架，Astro 将正文预先生成成静态网页，MDX 用于章节写作，React 只负责需要互动的实验组件。
+
+章节位于 `src/content/docs/chapters/`。如果在 `src/content/book.ts` 中加入新章节，可以执行 `npm run generate:chapters` 为缺少正文文件的章节生成内容骨架；已有书稿和单独维护的欧几里得样板章不会被覆盖。
 
 ### 本地运行
 
