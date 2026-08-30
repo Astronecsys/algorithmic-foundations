@@ -1,0 +1,18 @@
+---
+interface Props {
+  scene: string;
+  abstraction: string;
+  boundary: string;
+}
+
+const { scene, abstraction, boundary } = Astro.props;
+---
+
+<section class="model-card" aria-label="本章模型卡">
+  <header><span>MODEL CARD</span><strong>现实不会自动变成一道算法题</strong></header>
+  <div>
+    <article><small>01 · 现实任务</small><p>{scene}</p></article>
+    <article><small>02 · 抽象与目标</small><p>{abstraction}</p></article>
+    <article><small>03 · 前提与遗漏</small><p>{boundary}</p></article>
+  </div>
+</section>
