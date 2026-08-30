@@ -3,12 +3,13 @@ import { chapterCount, parts } from "../../content/book";
 
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 const chapterUrl = (slug: string) => `${base}chapters/${slug}/`;
+const completeCount = parts.flatMap((part) => part.chapters).filter((chapter) => chapter.status === "sample").length;
 ---
 
 <div class="book-contents">
   <div class="contents-summary">
     <p>一部横跨约四千年的算法文明史</p>
-    <div><strong>7</strong><span>卷</span><strong>{chapterCount}</strong><span>章</span><strong>1</strong><span>个可运行样板</span></div>
+    <div><strong>7</strong><span>卷</span><strong>{chapterCount}</strong><span>章</span><strong>{completeCount}</strong><span>篇完整样板</span></div>
   </div>
 
   {parts.map((part) => (
