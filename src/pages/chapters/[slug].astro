@@ -1,5 +1,5 @@
 ---
-import BookLayout from "../../layouts/BookLayout.astro";
+import ReadingLayout from "../../layouts/ReadingLayout.astro";
 import { chapters, parts, type Chapter, type Part } from "../../content/book";
 
 export function getStaticPaths() {
@@ -26,16 +26,20 @@ interface Props {
 const { chapter, part, previous, next } = Astro.props;
 const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 const chapterUrl = (slug: string) => `${base}chapters/${slug}/`;
+const headings = [
+  { id: "history", label: "历史现场" },
+  { id: "idea", label: "核心思想" },
+  { id: "lab", label: "互动实验" },
+  { id: "understand", label: "理解与证明" },
+  { id: "echo", label: "现实回声" },
+  { id: "sources", label: "史料与引用" },
+];
 ---
 
-<BookLayout title={`${chapter.title}｜可执行的智慧`} description={chapter.question}>
-  <main class="skeleton-page">
-    <header class="book-subnav">
-      <a class="brand" href={base}><span class="brand-mark">算</span><span>可执行的智慧</span></a>
-      <a class="quiet-link" href={`${base}contents/`}>全书目录</a>
-    </header>
-
+<ReadingLayout title={`${chapter.title}｜可执行的智慧`} description={chapter.question} currentSlug={chapter.slug} headings={headings}>
+  <div class="reader-article skeleton-page">
     <article>
+      <nav class="breadcrumbs" aria-label="面包屑"><a href={`${base}contents/`}>全书目录</a><span>/</span><a href={`${base}contents/#${part.slug}`}>{part.title}</a></nav>
       <div class="chapter-masthead">
         <div class="chapter-kicker">卷 {String(part.number).padStart(2, "0")} · 第 {String(chapter.number).padStart(2, "0")} 章</div>
         <h1>{chapter.title}</h1>
@@ -52,17 +56,17 @@ const chapterUrl = (slug: string) => `${base}chapters/${slug}/`;
         </aside>
 
         <div class="chapter-scaffold">
-          <section>
+          <section id="history">
             <span class="scaffold-label">01 · 历史现场</span>
             <h2>人们为什么需要它？</h2>
             <p>本节将从具体人物、器物、制度或科学问题进入，说明当时有哪些已知方法、它们为什么不够，以及新算法解决了哪一个真正的困难。</p>
           </section>
-          <section>
+          <section id="idea">
             <span class="scaffold-label">02 · 核心思想</span>
             <h2>{chapter.idea}</h2>
             <p>先通过图形和操作形成直觉，再把直觉连接到状态、步骤、不变量、终止条件与误差边界。</p>
           </section>
-          <section class="planned-lab">
+          <section class="planned-lab" id="lab">
             <span class="scaffold-label">03 · 计划中的互动实验</span>
             <h2>{chapter.lab}</h2>
             <div class="lab-placeholder">
@@ -70,17 +74,17 @@ const chapterUrl = (slug: string) => `${base}chapters/${slug}/`;
               <div class="placeholder-stage"><span>输入</span><b>→</b><span>逐步执行</span><b>→</b><span>解释</span></div>
             </div>
           </section>
-          <section>
+          <section id="understand">
             <span class="scaffold-label">04 · 理解与证明</span>
             <h2>它为什么有效，又会在哪里失败？</h2>
             <p>读者将尝试边界输入、寻找反例、归纳不变量，并用自己的语言解释正确性、效率或近似误差。</p>
           </section>
-          <section>
+          <section id="echo">
             <span class="scaffold-label">05 · 现实回声</span>
             <h2>这个思想后来去了哪里？</h2>
             <p>本节追踪算法在其他领域中的迁移、今天仍可见的应用，以及它造成的新限制、新风险或价值选择。</p>
           </section>
-          <section class="source-skeleton">
+          <section class="source-skeleton" id="sources">
             <span class="scaffold-label">史料与引用状态</span>
             <p>尚待建立一手史料、可靠二手研究、数学定义和实现来源。正文撰写前必须完成来源分级与交叉核验。</p>
           </section>
@@ -92,5 +96,5 @@ const chapterUrl = (slug: string) => `${base}chapters/${slug}/`;
       {previous ? <a href={chapterUrl(previous.slug)}><small>上一章</small><span>← {previous.title}</span></a> : <span></span>}
       {next ? <a class="next-chapter" href={chapterUrl(next.slug)}><small>下一章</small><span>{next.title} →</span></a> : <span></span>}
     </nav>
-  </main>
-</BookLayout>
+  </div>
+</ReadingLayout>

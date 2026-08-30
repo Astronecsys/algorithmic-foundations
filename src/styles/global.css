@@ -103,3 +103,124 @@ footer { display:flex; justify-content:space-between; padding:28px 6vw; border-t
   .book-subnav { padding:0 22px; }.contents-hero { padding:65px 22px; }.contents-hero h1 { font-size:48px; }.contents-legend { flex-wrap:wrap; }.parts-list { padding:15px 22px 70px; }.part-block { margin-top:50px; }.part-intro h2 { margin-top:32px; }.chapter-list a { grid-template-columns:32px 1fr 18px; padding-left:0; }.chapter-list .status { display:none; }.chapter-name b { font-size:16px; }.chapter-name small { font-size:12px; }
   .skeleton-page article { padding:55px 22px 0; }.chapter-masthead h1 { font-size:52px; }.chapter-meta { flex-wrap:wrap; }.chapter-scaffold>section { padding:30px 22px; }.placeholder-stage { gap:7px; }.placeholder-stage span { padding:9px 8px; font-size:11px; }.chapter-pagination { margin:0 22px 65px; }.chapter-pagination span { font-size:14px; }
 }
+
+/* Reading experience: persistent book tree, focused page, local outline. */
+.reading-app { min-height:100vh; background:#f6f3eb; }
+.reading-topbar { height:62px; padding:0 22px; display:flex; align-items:center; gap:16px; position:sticky; top:0; z-index:30; color:#f7f4eb; background:rgba(23,34,29,.97); border-bottom:1px solid rgba(255,255,255,.1); backdrop-filter:blur(14px); }
+.reading-brand { display:flex; align-items:center; gap:10px; flex:0 0 auto; font:700 14px/1 system-ui,sans-serif; letter-spacing:.04em; }
+.reading-brand .brand-mark { width:30px; height:30px; color:var(--ink); background:#f0c979; }
+.topbar-divider { width:1px; height:22px; background:rgba(255,255,255,.2); }
+.topbar-location { min-width:0; overflow:hidden; color:#bfc8c1; font:12px/1 system-ui,sans-serif; text-overflow:ellipsis; white-space:nowrap; }
+.topbar-actions { margin-left:auto; display:flex; gap:4px; font:650 12px/1 system-ui,sans-serif; }
+.topbar-actions a { padding:9px 11px; border-radius:5px; color:#dfe5e0; }
+.topbar-actions a:hover { color:#fff; background:rgba(255,255,255,.1); }
+.mobile-book-menu { display:none; }
+
+.reading-frame { width:100%; display:grid; grid-template-columns:268px minmax(0,1fr) 205px; align-items:start; }
+.reading-sidebar,.reading-toc { height:calc(100vh - 62px); position:sticky; top:62px; overflow:auto; scrollbar-width:thin; }
+.reading-sidebar { padding:21px 15px 42px; background:#efebe1; border-right:1px solid #d7d1c5; }
+.reading-main { min-width:0; min-height:calc(100vh - 62px); background:#fbfaf6; box-shadow:0 0 45px rgba(23,34,29,.035); }
+.reading-toc { padding:42px 24px; border-left:1px solid #e0dcd2; background:#f6f3eb; }
+.reading-toc>p { margin:0 0 16px; color:#92968f; font:800 10px/1 system-ui,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+.reading-toc nav { display:grid; gap:2px; }
+.reading-toc nav a { padding:7px 0 7px 13px; color:#737a73; border-left:1px solid #d0ccc2; font:12px/1.45 system-ui,sans-serif; }
+.reading-toc nav a:hover { color:var(--orange); border-left-color:var(--orange); }
+.toc-progress { margin-top:32px; padding-top:18px; display:grid; gap:8px; border-top:1px solid #ddd8cc; }
+.toc-progress span { width:34%; height:3px; background:var(--green); }
+.toc-progress small { color:#91968f; font:11px/1 system-ui,sans-serif; }
+
+.book-tree { display:grid; gap:7px; }
+.tree-home { margin-bottom:5px; padding:11px 10px; display:flex; justify-content:space-between; color:#39463e; border:1px solid #d1cbc0; background:rgba(255,255,255,.45); font:700 12px/1 system-ui,sans-serif; }
+.tree-home b { color:#8b9089; font-weight:500; }
+.tree-part { border-bottom:1px solid #d9d3c8; }
+.tree-part summary { padding:10px 8px; display:grid; grid-template-columns:42px 1fr; align-items:center; cursor:pointer; color:#4f5851; list-style:none; font:12px/1.25 system-ui,sans-serif; }
+.tree-part summary::-webkit-details-marker { display:none; }
+.tree-part summary span { color:var(--part-accent); font:800 9px/1 system-ui,sans-serif; letter-spacing:.08em; }
+.tree-part summary b { font-weight:720; }
+.tree-part summary::after { content:"+"; grid-column:3; color:#92968f; font-size:14px; }
+.tree-part[open] summary::after { content:"−"; }
+.tree-chapters { padding:2px 0 9px; display:grid; gap:1px; }
+.tree-chapters a { min-height:35px; padding:6px 7px; display:grid; grid-template-columns:28px minmax(0,1fr) auto; gap:5px; align-items:center; color:#656d66; border-radius:4px; font:11px/1.3 system-ui,sans-serif; }
+.tree-chapters a:hover { color:var(--ink); background:rgba(255,255,255,.65); }
+.tree-chapters a>span { color:#9a9e98; font:9px/1 monospace; }
+.tree-chapters a>b { overflow:hidden; font-weight:540; text-overflow:ellipsis; white-space:nowrap; }
+.tree-chapters a>i { padding:3px 4px; color:#a4492c; background:#f3d4c8; font:700 8px/1 system-ui,sans-serif; font-style:normal; }
+.tree-chapters a.active { color:#fff; background:var(--part-accent,var(--green)); box-shadow:0 5px 14px rgba(23,34,29,.12); }
+.tree-chapters a.active>span { color:rgba(255,255,255,.65); }
+.tree-chapters a.active>i { color:#672711; background:#f3c0a8; }
+
+.reader-article { max-width:940px; margin:0 auto; }
+.breadcrumbs { padding:30px 52px 0; display:flex; gap:8px; color:#7f867f; font:11px/1.4 system-ui,sans-serif; }
+.breadcrumbs a:hover { color:var(--orange); }
+.prose-masthead,.reading-main .chapter-masthead { max-width:780px; padding:58px 52px 65px; }
+.prose-masthead h1,.reading-main .chapter-masthead h1 { margin:22px 0 18px; font-size:clamp(48px,6vw,78px); line-height:1.04; letter-spacing:-.05em; font-weight:560; }
+.prose-masthead>p,.reading-main .chapter-question { max-width:680px; margin:0; color:#536057; font-size:19px; line-height:1.8; }
+.reading-main .chapter-meta { margin-top:27px; }
+.prose-section { max-width:780px; margin:0; padding:48px 52px; border-top:1px solid #ded9ce; scroll-margin-top:82px; }
+.prose-section h2 { margin:0 0 22px; font-size:31px; line-height:1.25; letter-spacing:-.025em; font-weight:600; }
+.prose-section p { color:#454f48; line-height:1.95; }
+.prose-section code { padding:2px 5px; color:#245e49; background:#e4eee8; border-radius:3px; font:90%/1.5 ui-monospace,monospace; }
+.prose-section blockquote { margin:28px 0 0; padding:18px 22px; color:#244536; background:#e4eee8; border-left:3px solid var(--green); }
+.problem-callout { max-width:none; margin:0 28px; padding:42px 38px; background:#f1dfc3; border:0; border-left:4px solid #b97927; }
+.experiment-section { max-width:none; padding:54px 28px; background:#24352d; color:#f8f4ea; }
+.experiment-section>h2,.experiment-section>p { max-width:780px; margin-left:auto; margin-right:auto; }
+.experiment-section>p { color:#d6ded8; }
+.experiment-section .lab-shell { margin:36px auto 0; }
+.source-note { margin-bottom:42px; color:#e9eee9; background:var(--ink); }
+.source-note p { color:#cbd3cd; }
+
+.reading-main .skeleton-page article { padding:0; }
+.reading-main .chapter-masthead { padding-top:58px; padding-bottom:62px; }
+.reading-main .skeleton-grid { display:block; border-top:1px solid var(--ink); }
+.reading-main .chapter-rail { padding:22px 52px; display:grid; grid-template-columns:140px minmax(0,1fr) auto; gap:16px; align-items:center; border-top:4px solid var(--part-accent); border-bottom:1px solid var(--line); background:#f0ece1; }
+.reading-main .chapter-rail>p:first-child { margin:0; }
+.reading-main .chapter-rail h2 { margin:0; font-size:20px; }
+.reading-main .chapter-rail>p:not(:first-child) { max-width:none; margin:0; font-size:13px; }
+.reading-main .chapter-rail a { margin:0; white-space:nowrap; }
+.reading-main .chapter-scaffold { border-left:0; }
+.reading-main .chapter-scaffold>section { min-height:0; padding:46px 52px; scroll-margin-top:82px; }
+.reading-main .chapter-scaffold h2 { margin:22px 0 12px; font-size:28px; }
+.reading-main .source-skeleton { padding-top:38px; padding-bottom:38px; }
+.reading-main .chapter-pagination { margin:0 52px 72px; }
+.reading-main .chapter-pagination a { min-width:0; }
+.reading-main .chapter-pagination span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+@media (max-width:1180px) {
+  .reading-frame { grid-template-columns:250px minmax(0,1fr); }
+  .reading-toc { display:none; }
+}
+@media (max-width:820px) {
+  .reading-frame { display:block; }
+  .reading-sidebar { display:none; }
+  .topbar-divider,.topbar-location { display:none; }
+  .topbar-actions a:first-child { display:none; }
+  .mobile-book-menu { margin-left:4px; display:block; font:650 12px/1 system-ui,sans-serif; }
+  .mobile-book-menu>summary { padding:9px 11px; cursor:pointer; color:#fff; background:rgba(255,255,255,.1); border-radius:5px; list-style:none; }
+  .mobile-book-menu>summary::-webkit-details-marker { display:none; }
+  .mobile-book-drawer { width:min(340px,calc(100vw - 24px)); height:calc(100vh - 74px); padding:18px 14px 36px; position:absolute; top:68px; right:12px; overflow:auto; color:var(--ink); background:#efebe1; border:1px solid #cbc5b9; border-radius:6px; box-shadow:0 22px 70px rgba(12,20,16,.28); }
+  .mobile-book-drawer .book-tree { display:grid; }
+}
+@media (max-width:600px) {
+  .reading-topbar { height:58px; padding:0 12px; gap:7px; }
+  .reading-brand b { display:none; }
+  .topbar-actions { margin-left:auto; }
+  .topbar-actions a { padding:8px 6px; }
+  .mobile-book-menu { margin-left:0; }
+  .mobile-book-drawer { top:64px; }
+  .reader-article { width:100%; padding:0; }
+  .breadcrumbs { padding:22px 22px 0; display:flex; }
+  .prose-masthead,.reading-main .chapter-masthead { padding:44px 22px 48px; }
+  .prose-masthead h1,.reading-main .chapter-masthead h1 { font-size:46px; }
+  .prose-masthead>p,.reading-main .chapter-question { font-size:17px; }
+  .prose-section { padding:40px 22px; }
+  .problem-callout { margin:0 12px; padding:34px 22px; }
+  .experiment-section { padding:45px 12px; }
+  .experiment-section>h2,.experiment-section>p { padding:0 10px; }
+  .reading-main .chapter-rail { padding:22px; display:block; }
+  .reading-main .chapter-rail h2 { margin:13px 0 7px; }
+  .reading-main .chapter-rail a { margin-top:12px; }
+  .reading-main .chapter-scaffold>section { padding:38px 22px; }
+  .reading-main .chapter-pagination { margin:0 22px 56px; display:grid; }
+  .reading-main .chapter-pagination a { padding:22px 8px; }
+  .reading-main .chapter-pagination .next-chapter { padding-left:12px; }
+}
